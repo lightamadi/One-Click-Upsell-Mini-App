@@ -1077,7 +1077,7 @@
         "unit": "px",
         "label": "t:settings_schema.global.settings.thickness.label",
         "default": 1
-      },
+      }, 
       {
         "type": "range",
         "id": "popup_border_opacity",
@@ -1463,6 +1463,44 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      }
+    ]
+  },
+  {
+    "name": "One-Click Upsell",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Upsell Popup Settings"
+      },
+      {
+        "type": "text",
+        "id": "upsell_popup_title",
+        "label": "Popup Title",
+        "default": "Special Offer!"
+      },
+      {
+        "type": "product",
+        "id": "upsell_product",
+        "label": "Upsell Product"
+      },
+      {
+        "type": "textarea",
+        "id": "upsell_popup_description",
+        "label": "Popup Description",
+        "default": "Add this item to your cart!"
+      },
+      {
+        "type": "text",
+        "id": "upsell_popup_accept_text",
+        "label": "Accept Button Text",
+        "default": "Add to Cart"
+      },
+      {
+        "type": "text",
+        "id": "upsell_popup_decline_text",
+        "label": "Decline Button Text",
+        "default": "No Thanks"
       }
     ]
   }

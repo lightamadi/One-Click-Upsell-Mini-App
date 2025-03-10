@@ -1,0 +1,45 @@
+{%- comment -%}One-Click Upsell Popup{%- endcomment -%}
+<div id="one-click-upsell" class="upsell-popup" style="display: none;">
+  <div class="upsell-popup__overlay"></div>
+  <div class="upsell-popup__content">
+    <button type="button" class="upsell-popup__close" aria-label="Close">×</button>
+    
+    <div class="upsell-popup__header">
+      <h2>{{ settings.upsell_popup_title | default: 'Special Offer!' }}</h2>
+    </div>
+
+    {%- if settings.upsell_product != blank -%}
+      {%- assign upsell_product = all_products[settings.upsell_product] -%}
+      <div class="upsell-popup__product" data-upsell-variant-id="{{ upsell_product.selected_or_first_available_variant.id }}">
+        <div class="upsell-popup__image">
+          <img src="{{ upsell_product.featured_image | img_url: '300x300', crop: 'center' }}" 
+               alt="{{ upsell_product.title | escape }}"
+               loading="lazy"
+               width="300"
+               height="300">
+        </div>
+        <div class="upsell-popup__details">
+          <h3>{{ upsell_product.title }}</h3>
+          <div class="upsell-popup__price">
+            <span class="price">{{ upsell_product.price | money }}</span>
+            {%- if upsell_product.compare_at_price > upsell_product.price -%}
+              <span class="compare-price">{{ upsell_product.compare_at_price | money }}</span>
+            {%- endif -%}
+          </div>
+          <p class="upsell-popup__description">
+            {{ settings.upsell_popup_description | default: 'Add this item to your cart!' }}
+          </p>
+        </div>
+      </div>
+
+      <div class="upsell-popup__actions">
+        <button type="button" class="upsell-popup__add-to-cart button button--primary">
+          {{ settings.upsell_popup_accept_text | default: 'Add to Cart' }}
+        </button>
+        <button type="button" class="upsell-popup__decline button button--secondary">
+          {{ settings.upsell_popup_decline_text | default: 'No Thanks' }}
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</div> 
